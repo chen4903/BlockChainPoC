@@ -4,6 +4,16 @@ pragma solidity >=0.7.0 <0.9.0;
 
 import "forge-std/Test.sol";
 
+// https://uniswap.org/docs/v2/smart-contracts
+
+interface IEGD_Finance {
+    function bond(address invitor) external;
+    function stake(uint256 amount) external;
+    function calculateAll(address addr) external view returns (uint256);
+    function claimAllReward() external;
+    function getEGDPrice() external view returns (uint256);
+}
+
 interface CheatCodes {
   // This allows us to getRecordedLogs()
   struct Log {bytes32[] topics; bytes data;}
@@ -4700,6 +4710,13 @@ interface IUniswapV2Router {
   ) external returns (uint256[] memory amounts);
 
   receive() external payable;
+}
+
+interface Curve{
+    function flash(address recipient, uint256 amount0, uint256 amount1, bytes calldata data) external;
+    function viewDeposit(uint256 _deposit) external view returns (uint256, uint256[] memory);
+    function deposit(uint256 _deposit, uint256 _deadline) external returns (uint256, uint256[] memory);
+    function withdraw(uint256 _curvesToBurn, uint256 _deadline) external;
 }
 
 interface ICurvePool {

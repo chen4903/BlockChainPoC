@@ -4,15 +4,25 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-interface Curve{
-    function flash(address recipient, uint256 amount0, uint256 amount1, bytes calldata data) external;
-    function viewDeposit(uint256 _deposit) external view returns (uint256, uint256[] memory);
-    function deposit(uint256 _deposit, uint256 _deadline) external returns (uint256, uint256[] memory);
-    function withdraw(uint256 _curvesToBurn, uint256 _deadline) external;
-}
+// @KeyInfo 
+
+// key words: @flashloan @reentrancy
+// date: 2022.11.11
+// total Lost: 4 million$
+// network: Mainnet
+// Attacker: 
+// Attack Contract: 0x6cfa86a352339e766ff1ca119c8c40824f41f22d
+// Vulnerable Contract: 0x46161158b1947d9149e066d6d31af1283b2d377c
+// Attack Tx: 0x6bfd9e286e37061ed279e4f139fbc03c8bd707a2cdd15f7260549052cbba79b7
+
+// @Info
+// Vulnerable Contract Code : 0x46161158b1947d9149e066d6d31af1283b2d377c
+
+// @Analysis
+// blog: https://www.levi104.com/2023/07/15/08.PoC/03.DFX%20Finance%20@Reentrancy@flashloan/
+
 
 // forge test --match-path test/DFX.sol
-// cost 800ms, so slow
 contract DFXTest is DSTest{
     IERC20 XIDR = IERC20(0xebF2096E01455108bAdCbAF86cE30b6e5A72aa52);
     IERC20 USDC = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
