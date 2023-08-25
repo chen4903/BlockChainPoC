@@ -32,7 +32,7 @@ address constant EGD_Finance = 0x34Bd6Dba456Bc31c2b3393e499fa10bED32a9370;
 address constant usdt = 0x55d398326f99059fF775485246999027B3197955;
 address constant egd = 0x202b233735bF743FA31abb8f71e641970161bF98;
 
-// forge test --match-path test\EGD-Finance.sol -vvv
+// forge test --match-path test\02.EGD-Finance.sol -vvv
 contract Attacker is Test {
 
     function setUp() public {

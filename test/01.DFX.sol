@@ -22,7 +22,7 @@ import "./interface.sol";
 // blog: https://www.levi104.com/2023/07/15/08.PoC/03.DFX%20Finance%20@Reentrancy@flashloan/
 
 
-// forge test --match-path test/DFX.sol
+// forge test --match-path test/01.DFX.sol
 contract DFXTest is DSTest{
     IERC20 XIDR = IERC20(0xebF2096E01455108bAdCbAF86cE30b6e5A72aa52);
     IERC20 USDC = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
