@@ -21,10 +21,6 @@ import "./interface.sol";
 // @Analysis
 // WTF lesson: https://github.com/AmazingAng/WTF-Solidity/tree/main/Topics/Onchain_debug/04_write_your_own_poc/
 
-interface MEVBot{
-    function pancakeCall(address sender, uint amount0, uint amount1, bytes calldata data) external;
-}
-
 // forge test --match-path test\03.BNB48MEVBot.sol -vvv
 contract ContractTest is DSTest{
     address public _token0;
