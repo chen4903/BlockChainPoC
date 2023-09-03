@@ -4,25 +4,9 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-// @KeyInfo 
-
-// key words: @flashloan @reentrancy
-// date: 2022.11.11
-// total Lost: 4 million$
-// network: Mainnet
-// Attacker: 
-// Attack Contract: 0x6cfa86a352339e766ff1ca119c8c40824f41f22d
-// Vulnerable Contract: 0x46161158b1947d9149e066d6d31af1283b2d377c
-// Attack Tx: 0x6bfd9e286e37061ed279e4f139fbc03c8bd707a2cdd15f7260549052cbba79b7
-
-// @Info
-// Vulnerable Contract Code : 0x46161158b1947d9149e066d6d31af1283b2d377c
-
-// @Analysis
-// blog: https://www.levi104.com/2023/07/15/08.PoC/03.DFX%20Finance%20@Reentrancy@flashloan/
+// https://www.levi104.com/categories/08-PoC/
 
 
-// forge test --match-path test/01.DFX.sol
 contract DFXTest is DSTest{
     IERC20 XIDR = IERC20(0xebF2096E01455108bAdCbAF86cE30b6e5A72aa52);
     IERC20 USDC = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);

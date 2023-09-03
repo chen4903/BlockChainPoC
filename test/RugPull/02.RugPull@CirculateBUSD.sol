@@ -3,7 +3,7 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./interface.sol";
 
-// 分析：https://www.levi104.com/2023/08/25/13.RugPull/02.RugPull@CirculateBUSD/
+// 分析：https://www.levi104.com/categories/13-RugPull/
 
 contract Attacker is Test {
 

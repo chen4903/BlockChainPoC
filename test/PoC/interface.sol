@@ -1,5 +1,30 @@
 pragma solidity >=0.7.0 <0.9.0;
 
+interface IProxyFactory {
+    function createProxy(address masterCopy, bytes calldata data) external returns (address payable proxy);
+}
+
+interface IDVM{
+  // 没有returns(bool)!!!!!!!!!!!!!!!!!!!!!!
+  function flashLoan(uint256,uint256,address,bytes memory) external;
+}
+
+interface IQuixotic {
+    function fillSellOrder(
+        address seller,
+        address contractAddress,
+        uint256 tokenId,
+        uint256 startTime,
+        uint256 expiration,
+        uint256 price,
+        uint256 quantity,
+        uint256 createdAtBlockNumber,
+        address paymentERC20,
+        bytes memory signature,
+        address buyer
+    ) external payable;
+}
+
 interface IMEVBOT{
   function pancakeCall(address, uint256, uint256, bytes memory) external;
 }
@@ -20,12 +45,13 @@ interface IETH{
     function balanceOf(address) external view returns (uint256);
 }
 
+interface IOHM{
+  function balanceOf(address) external view returns (uint256);
+}
 
-
-
-
-
-
+interface IBondFixedExpiryTeller{
+  function redeem(address, uint256) external;
+}
 
 
 

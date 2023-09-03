@@ -3,6 +3,8 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "./contract.sol";
 
+// https://www.levi104.com/categories/13-RugPull/
+
 contract Attacker is Test {
 
     TokenIEGT public token;
