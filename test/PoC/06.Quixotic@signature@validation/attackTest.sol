@@ -3,7 +3,9 @@ pragma solidity ^0.8.10;
 import "forge-std/Test.sol";
 import "../interface.sol";
 import "./NFTContract.sol";
+
 //https://www.levi104.com/categories/08-PoC/
+
 contract Attacker is Test {
 
     NFTContract public nftHelper;
@@ -47,6 +49,5 @@ contract Attacker is Test {
 
         emit log_named_uint("[after] attacker OP Balance:", op.balanceOf(attacker));
     }
-
    
 }

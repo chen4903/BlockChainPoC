@@ -14,7 +14,7 @@ contract ContractTest is Test {
     address victim = 0x4189ad9624F838eef865B09a0BE3369EAaCd8f6F;
 
     function setUp() public{
-        vm.createSelectFork("mainnet", 18_423_219); // 攻击在18_432_662
+        vm.createSelectFork("mainnet", 18_423_219); // 攻击在18_423_220
     }
 
     function test_exploit() public{
